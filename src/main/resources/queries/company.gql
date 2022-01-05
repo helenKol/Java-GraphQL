@@ -1,0 +1,19 @@
+{
+    company {
+        name
+        employees
+        ceo
+        coo
+        links {
+            elon_twitter
+            flickr
+            twitter
+            website
+        }
+        headquarters {
+            address
+            city
+            state
+        }
+    }
+}

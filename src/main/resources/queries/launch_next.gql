@@ -1,0 +1,22 @@
+{
+    launchNext {
+        rocket {
+            rocket {
+                company
+                engines {
+                    propellant_1
+                    type
+                }
+                name
+                id
+                height {
+                    feet
+                    meters
+                }
+            }
+        }
+        launch_year
+        mission_name
+        mission_id
+    }
+}

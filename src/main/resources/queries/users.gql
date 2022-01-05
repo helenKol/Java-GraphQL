@@ -1,0 +1,6 @@
+query gerUsers($limit:Int){
+    users(limit: $limit) {
+        id
+        name
+    }
+}

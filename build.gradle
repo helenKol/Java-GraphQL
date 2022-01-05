@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id "io.github.kobylynskyi.graphql.codegen" version "5.2.0"
+    id "io.freefair.lombok" version "5.3.0"
+    id 'io.qameta.allure' version '2.8.1'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.aeonbits.owner:owner:1.0.10'
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.4.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.3'
+}
+
+test {
+    useJUnitPlatform()
+
+    systemProperties System.getProperties()
+
+    testLogging {
+        showStandardStreams = true
+        events "PASSED", "FAILED", "SKIPPED"
+        exceptionFormat = "full"
+    }
+}
+
+graphqlCodegen {
+    graphqlSchemas.includePattern = "schema\\.graphql"
+    outputDir = new File("$buildDir/generated")
+}
+
+allure {
+    version = "2.13.8"
+    autoconfigure = true
+    aspectjVersion = '1.9.7'
+    configuration = 'compile'
+
+    useJUnit5 {
+        version = "2.13.8"
+    }
+}
